@@ -1,14 +1,26 @@
-import "./App.css";
-import Header from "./Header";
-import Home from "./Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  HomePage,
+  NavBar,
+  Checkout,
+  SearchResults,
+  ProductPage,
+  Footer,
+} from "./components";
 
-function App() {
+const App = () => {
   return (
-    <div className='App'>
-      <Header />
-      <Home />
-    </div>
+    <BrowserRouter>
+      <NavBar />
+      <Routes>
+        <Route exact path='/' element={<HomePage />} />
+        <Route path='/search' element={<SearchResults />} />
+        <Route path='/product/:id' element={<ProductPage />} />
+        <Route path='/checkout' element={<Checkout />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
